@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import {findKey, includes} from 'lodash-es'
 import Highlight from 'react-syntax-highlighter'
 import isBinary from 'is-binary'

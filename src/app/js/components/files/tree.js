@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import {isEmpty, includes, map} from 'lodash-es'
 import {join} from 'path'
 import {DropTarget} from 'react-dnd'

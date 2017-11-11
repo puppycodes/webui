@@ -1,10 +1,17 @@
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import {Row, Col} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
 import Explorer from '../containers/files-explorer'
 import {pages} from '../actions'
 
+/*
+import FilesPreviewPage from './containers/files-preview'
+<Route path='/files' component={FilesPage}>
+          <Route path='preview' component={FilesPreviewPage} />
+        </Route>
+        */
 class Files extends Component {
   componentWillMount () {
     this.props.load()

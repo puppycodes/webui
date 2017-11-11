@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import {Buffer} from 'safe-buffer'
 
 const RawData = ({data, limit = 10000}) => {

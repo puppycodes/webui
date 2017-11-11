@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import {chain, isEmpty, compact} from 'lodash-es'
 
 import Icon from '../../views/icon'
