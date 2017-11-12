@@ -24,7 +24,7 @@
     "i18next-sprintf-postprocessor": "^0.2.2",
     "i18next-xhr-backend": "^1.5.0",
     "ipfs-api": "^15.0.1",
-    "ipfs-geoip": "^2.2.0",
+    "ipfs-geoip": "^2.3.0",
     "is-binary": "^0.1.0",
     "lodash-es": "^4.17.4",
     "multiaddr": "^3.0.1",

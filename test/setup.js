@@ -1,4 +1,4 @@
-require('babel-polyfill')
+require('@babel/polyfill')
 require('./test-helpers')
 
 // This gets replaced by karma webpack with the updated files on rebuild
