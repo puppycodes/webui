@@ -103,7 +103,6 @@ class FilesExplorer extends Component {
             <Row>
               <Col sm={12}>
                 <Breadcrumbs
-                  files={list}
                   root={root}
                   setRoot={setRoot}
                 />
