@@ -62,10 +62,9 @@ class FilesExplorer extends Component {
     if (file.Type === 'directory') {
       setRoot(filePath)
     } else {
-      history.push('/files/preview', {
-        query: {
-          name: filePath
-        }
+      history.push({
+        pathname: '/files/preview',
+        search: 'name=' + filePath
       })
     }
   }

@@ -2,12 +2,10 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import multiaddr from 'multiaddr'
-import {withRouter} from 'react-router'
 
-import {pages, router, preview} from '../actions'
+import {pages, preview} from '../actions'
 import Icon from '../views/icon'
 import Preview from '../components/preview'
-import shouldPureComponentUpdate from '../utils/pure'
 
 function getGatewayUrl (config) {
   if (!config.Addresses) {
@@ -34,11 +32,7 @@ class FilesPreview extends Component {
   _onClose = (event) => {
     event.preventDefault()
 
-    this.props.goBack()
-  }
-
-  shouldComponentUpdate () {
-    shouldPureComponentUpdate()
+    this.props.history.goBack()
   }
 
   componentWillMount () {
@@ -50,6 +44,8 @@ class FilesPreview extends Component {
   }
 
   render () {
+    console.log(this.props)
+
     const {name, read} = this.props
     const content = this.props.preview ? this.props.preview.content : null
     const stats = this.props.preview ? this.props.preview.stats : {}
@@ -89,20 +85,19 @@ FilesPreview.propTypes = {
   load: PropTypes.func.isRequired,
   leave: PropTypes.func.isRequired,
   read: PropTypes.func.isRequired,
-  goBack: PropTypes.func.isRequired
+  history: PropTypes.object.isRequired
 }
 
 function mapStateToProps (state, ownProps) {
   return {
-    name: ownProps.location.query.name,
+    name: new window.URLSearchParams(ownProps.location.search).get('name'),
     preview: state.preview,
     config: state.config.config
   }
 }
 
-export default withRouter(connect(mapStateToProps, {
+export default connect(mapStateToProps, {
   load: pages.preview.load,
   leave: pages.preview.leave,
-  read: preview.read,
-  goBack: router.goBack
-})(FilesPreview))
+  read: preview.read
+})(FilesPreview)
