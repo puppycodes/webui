@@ -11,7 +11,6 @@ import configureStore from './store/configure-store'
 import '../css/app.less'
 
 const store = configureStore()
-// const history = syncHistoryWithStore(hashHistory, store)
 const history = createHistory()
 
 window.requestAnimationFrame(() => {
