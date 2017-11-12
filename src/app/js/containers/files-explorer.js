@@ -5,8 +5,9 @@ import {connect} from 'react-redux'
 import {join} from 'path'
 import {includes} from 'lodash-es'
 import {toastr} from 'react-redux-toastr'
+import {withRouter} from 'react-router'
 
-import {files, router} from '../actions'
+import {files} from '../actions'
 
 import Tree from './../components/files/tree'
 import ActionBar from './../components/files/action-bar'
@@ -55,14 +56,13 @@ class FilesExplorer extends Component {
   }
 
   _onRowDoubleClick = (file, shiftKey) => {
-    const {root, deselectAll, setRoot, push} = this.props
+    const {root, deselectAll, setRoot, history} = this.props
     const filePath = join(root, file.Name)
     deselectAll()
     if (file.Type === 'directory') {
       setRoot(filePath)
     } else {
-      push({
-        pathname: '/files/preview',
+      history.push('/files/preview', {
         query: {
           name: filePath
         }
@@ -158,7 +158,7 @@ FilesExplorer.propTypes = {
   deselect: PropTypes.func.isRequired,
   deselectAll: PropTypes.func.isRequired,
   createFiles: PropTypes.func.isRequired,
-  push: PropTypes.func.isRequired
+  history: PropTypes.object.isRequired
 }
 
 function mapStateToProps (state) {
@@ -167,7 +167,7 @@ function mapStateToProps (state) {
   return files
 }
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
   setRoot: files.filesSetRoot,
   createTmpDir: files.filesCreateTmpDir,
   setTmpDirName: files.filesSetTmpDirName,
@@ -177,6 +177,5 @@ export default connect(mapStateToProps, {
   select: files.filesSelect,
   deselect: files.filesDeselect,
   deselectAll: files.filesDeselectAll,
-  createFiles: files.filesCreateFiles,
-  push: router.push
-})(FilesExplorer)
+  createFiles: files.filesCreateFiles
+})(FilesExplorer))

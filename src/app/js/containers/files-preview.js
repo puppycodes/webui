@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import multiaddr from 'multiaddr'
+import {withRouter} from 'react-router'
 
 import {pages, router, preview} from '../actions'
 import Icon from '../views/icon'
@@ -99,9 +100,9 @@ function mapStateToProps (state, ownProps) {
   }
 }
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
   load: pages.preview.load,
   leave: pages.preview.leave,
   read: preview.read,
   goBack: router.goBack
-})(FilesPreview)
+})(FilesPreview))

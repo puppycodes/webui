@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import ReduxToastr, {toastr} from 'react-redux-toastr'
 import {DragDropContext} from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import i18n from '../utils/i18n.js'
 import {parse} from '../utils/path'
 import {errors} from '../actions'
@@ -119,8 +119,6 @@ function mapStateToProps (state) {
   }
 }
 
-export default DragDropContext(HTML5Backend)(connect(mapStateToProps, {
+export default withRouter(DragDropContext(HTML5Backend)(connect(mapStateToProps, {
   resetErrorMessage: errors.resetErrorMessage
-}, undefined, {
-  pure: false
-})(App))
+})(App)))

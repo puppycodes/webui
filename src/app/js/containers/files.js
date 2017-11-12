@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import {Row, Col} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
-import {Route} from 'react-router'
+import {Route, Switch} from 'react-router'
 
-import Explorer from '../containers/files-explorer'
 import {pages} from '../actions'
-import FilesPreviewPage from './files-preview'
+import Explorer from './files-explorer'
+import Preview from './files-preview'
 
 class Files extends Component {
   componentWillMount () {
@@ -22,9 +22,10 @@ class Files extends Component {
     return (
       <Row>
         <Col sm={10} smOffset={1}>
-          <Explorer />
-          <Route path='preview' component={FilesPreviewPage} />
-          {this.props.children}
+          <Switch>
+            <Route path='/files/preview' component={Preview} />
+            <Route path='/files' component={Explorer} />
+          </Switch>
         </Col>
       </Row>
     )
@@ -33,8 +34,7 @@ class Files extends Component {
 
 Files.propTypes = {
   load: PropTypes.func.isRequired,
-  leave: PropTypes.func.isRequired,
-  children: PropTypes.node
+  leave: PropTypes.func.isRequired
 }
 
 export default connect(null, {...pages.files})(Files)
