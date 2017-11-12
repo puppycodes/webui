@@ -3,7 +3,7 @@ import 'babel-polyfill'
 import React from 'react'
 import {render} from 'react-dom'
 
-import createHistory from 'history/createBrowserHistory'
+import createHistory from 'history/createHashHistory'
 
 import routes from './routes'
 import Root from './containers/root'

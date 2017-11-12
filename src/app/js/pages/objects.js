@@ -9,8 +9,8 @@ import {withIpfs} from '../components/ipfs'
 class Objects extends React.Component {
   constructor (props) {
     super(props)
-    const {params, ipfs} = props
-    this.state = this._getStateFromRoute(params, ipfs)
+    const {match, ipfs} = props
+    this.state = this._getStateFromRoute(match.params, ipfs)
   }
 
   _getStateFromRoute = (params, ipfs) => {
@@ -26,8 +26,8 @@ class Objects extends React.Component {
   }
 
   _updateState = () => {
-    const {params, ipfs} = this.props
-    this.setState(this._getStateFromRoute(params, ipfs))
+    const {match, ipfs} = this.props
+    this.setState(this._getStateFromRoute(match.params, ipfs))
   };
 
   _getObject = (ipfs, path) => {
@@ -49,7 +49,7 @@ class Objects extends React.Component {
     if (event.which && event.which !== 13) {
       return
     }
-    const params = this.props.params
+    const params = this.props.match.params
     params.path = parse(this.state.pathInput).urlify()
 
     const route = ['/objects']
@@ -59,7 +59,7 @@ class Objects extends React.Component {
 
     const r = route.join('/')
     if ('#' + r !== window.location.hash) {
-      this.context.router.push(r)
+      this.context.router.history.push(r)
     }
   }
 
@@ -131,7 +131,7 @@ Objects.contextTypes = {
 
 Objects.propTypes = {
   gateway: PropTypes.string,
-  params: PropTypes.object,
+  match: PropTypes.object,
   ipfs: PropTypes.object
 }
 

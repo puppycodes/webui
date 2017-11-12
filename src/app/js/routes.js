@@ -24,7 +24,7 @@ default (
       <Route exact path='/home' component={HomePage} />
       <Route path='/connections' component={ConnectionsPage} />
       <Route path='/files' component={FilesPage} />
-      <Route path='/objects(/:path)' component={ObjectsPage} />
+      <Route path='/objects/:path?' component={ObjectsPage} />
       <Route path='/bitswap' component={BitswapPage} />
       <Route path='/routing' component={RoutingPage} />
       <Route path='/config' component={ConfigPage} />
