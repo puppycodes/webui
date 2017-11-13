@@ -9,7 +9,7 @@ export function * stat () {
     yield put(preview.requests.stat.request())
 
     const {routing} = yield select()
-    const {name} = routing.locationBeforeTransitions.query
+    const {name} = new window.URLSearchParams(routing.location.search).get('name')
     const stats = yield call(api.files.stat, name)
 
     yield put(preview.requests.stat.success({
