@@ -37,7 +37,7 @@ ObjectView.propTypes = {
   permalink: PropTypes.instanceOf(Path),
   gateway: PropTypes.string.isRequired,
   object: PropTypes.shape({
-    data: PropTypes.string,
+    data: PropTypes.object,
     links: PropTypes.array
   }).isRequired
 }

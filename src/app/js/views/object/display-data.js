@@ -32,7 +32,7 @@ const DisplayData = ({data}) => {
 }
 
 DisplayData.propTypes = {
-  data: PropTypes.string
+  data: PropTypes.object
 }
 
 export default DisplayData

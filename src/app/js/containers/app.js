@@ -23,6 +23,10 @@ class App extends Component {
     }
   }
 
+  goToHashOrPath = () => {
+    this.context.router.history.push(`/objects/${parse(this.refs.dagPath.value).urlify()}`)
+  }
+
   render () {
     const {children} = this.props
 
@@ -53,7 +57,7 @@ class App extends Component {
                       <input type='text' ref='dagPath' className='form-control dag-path' placeholder={i18n.t('Enter a hash or path')} />
                     </div>
                     <button className='btn btn-third btn-xs'
-                      onClick={() => this.context.router.push(`/objects/${parse(this.refs.dagPath.value).urlify()}`)}>
+                      onClick={this.goToHashOrPath}>
                       {i18n.t('GO')}
                     </button>
                   </form>
